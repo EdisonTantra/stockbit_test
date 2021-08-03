@@ -16,7 +16,7 @@ func findFirstStringInBracket(str string) (result string) {
 	}
 
 	// if you really want same return with the old function
-	// if you want to whole word just remove 3 lines below
+	// if you want to whole word just remove 4 lines below
 	if len(result) > 1 {
 		// slice last char
 		result = result[:len(result)-1]
