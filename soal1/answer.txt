@@ -1,0 +1,5 @@
+
+SELECT u.id,u.username, COALESCE(p.username, 'NULL' ) as ParentUserName
+FROM  user u 
+LEFT JOIN user p ON u.parent_id=p.id  
+ORDER BY id ASC LIMIT 3;
