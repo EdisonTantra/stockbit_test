@@ -23,23 +23,23 @@ var testCases = []struct {
 	{
 		description: "one word in bracket",
 		input:       "(hello)",
-		expected:    "hell",
+		expected:    "hello",
 	},
 	{
 		description: "two words in different bracket",
 		input:       "(hello)(world)",
-		expected:    "hell",
+		expected:    "hello",
 	},
 	{
 		description: "have many open bracket",
 		input:       "(((hello",
 		expected:    "",
 	},
-	// {
-	// 	description: "only bracket",
-	// 	input:       "()",
-	// 	expected:    "",
-	// },
+	{
+		description: "only bracket",
+		input:       "()",
+		expected:    "",
+	},
 	{
 		description: "have many close bracket",
 		input:       "hello))))",
@@ -48,11 +48,26 @@ var testCases = []struct {
 	{
 		description: "have many bracket",
 		input:       "(((hello))))",
-		expected:    "((hell",
+		expected:    "hello",
 	},
 	{
-		description: "have many bracket",
+		description: "have many words",
 		input:       "(hello world apple)",
-		expected:    "hello world appl",
+		expected:    "hello",
+	},
+	{
+		description: "have space around",
+		input:       "( hello )",
+		expected:    "hello",
+	},
+	{
+		description: "have many words",
+		input:       "( hello world apple )",
+		expected:    "hello",
+	},
+	{
+		description: "have many words",
+		input:       "(   hello   )",
+		expected:    "hello",
 	},
 }
