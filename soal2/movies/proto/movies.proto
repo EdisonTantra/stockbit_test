@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+package movies;
+
+option go_package = "./proto;movies";
+
+service Movies {
+	rpc Call(Request) returns (Response) {}
+	rpc Stream(StreamingRequest) returns (stream StreamingResponse) {}
+	rpc PingPong(stream Ping) returns (stream Pong) {}
+	
+    rpc GetMovieByID (GetMovieByRequest) returns (MovieData);
+	rpc SearchMovie (SearchRequest) returns (SearchResponse);
+}
+
+message Message {
+	string say = 1;
+}
+
+message Request {
+	string name = 1;
+}
+
+message Response {
+	string msg = 1;
+}
+
+message StreamingRequest {
+	int64 count = 1;
+}
+
+message StreamingResponse {
+	int64 count = 1;
+}
+
+message Ping {
+	int64 stroke = 1;
+}
+
+message Pong {
+	int64 stroke = 1;
+}
+
+message GetMovieByRequest {
+	string value = 1;
+}
+
+message SearchRequest {
+	string query = 1;
+	int64 current_page = 2;
+}
+
+message SearchResponse {
+    int64 count = 1;
+    int64 per_page = 2;
+    int64 current_page = 3;
+    repeated MovieData data = 4;
+}
+
+message MovieData {
+	string imdbID = 1;
+	string title = 2;
+	string year = 3;
+	string type = 4;
+	string poster_url = 5;
+	string rated = 6;
+	string released = 7;
+	string runtime = 8;
+	string genre = 9;
+	string director = 10;
+	string writer = 11;
+	string actors = 12;
+	string plot = 13;
+	string language = 14;
+	string country = 15;
+	string awards = 16;
+	string metascore = 17;
+	string imdb_rating = 18;
+	string imdb_votes = 19;
+	string dvd = 20;
+	string box_office = 21;
+	string production = 22;
+	string website = 23;
+	repeated MovieRating ratings = 24;
+}
+
+message MovieRating {
+	string source = 1;
+	string value = 2;
+}

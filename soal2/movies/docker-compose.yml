@@ -1,0 +1,14 @@
+version: "3"
+services:
+  micro:
+    image: micro/micro
+    command: ["server"]
+    container_name: micro
+  movie:
+    build: .
+    container_name: movie
+    command: "./movie service"
+    environment:
+        DOCKER_COMPOSE: "true"
+        MICRO_REGISTRY: micro
+        MICRO_REGISTRY_ADDRESS: "micro:8000"
