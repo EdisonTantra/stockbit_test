@@ -13,14 +13,12 @@ import (
 
 type Movies struct{}
 
-// Call is a single request handler called via client.Call or the generated client code
 func (e *Movies) Call(ctx context.Context, req *movies.Request, rsp *movies.Response) error {
 	log.Info("Received Movies.Call request")
-	rsp.Msg = "Hello " + req.Name
+	rsp.Msg = "Hello"
 	return nil
 }
 
-// Stream is a server side stream handler called via client.Stream or the generated client code
 func (e *Movies) Stream(ctx context.Context, req *movies.StreamingRequest, stream movies.Movies_StreamStream) error {
 	log.Infof("Received Movies.Stream request with count: %d", req.Count)
 
@@ -36,7 +34,6 @@ func (e *Movies) Stream(ctx context.Context, req *movies.StreamingRequest, strea
 	return nil
 }
 
-// PingPong is a bidirectional stream handler called via client.Stream or the generated client code
 func (e *Movies) PingPong(ctx context.Context, stream movies.Movies_PingPongStream) error {
 	for {
 		req, err := stream.Recv()

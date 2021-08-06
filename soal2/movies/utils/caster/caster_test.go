@@ -43,7 +43,6 @@ func BenchmarkTestCastSimpleStruct(b *testing.B) {
 		Followers:     1000,
 	}
 
-	// run the Fib function b.N times
 	for n := 0; n < b.N; n++ {
 		p := &Person{}
 		Cast(a, p)

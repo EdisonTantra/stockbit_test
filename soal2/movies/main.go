@@ -9,16 +9,13 @@ import (
 )
 
 func main() {
-	// Create service
 	srv := service.New(
 		service.Name("movies"),
 		service.Version("3"),
 	)
 
-	// Register handler
 	pb.RegisterMoviesHandler(srv.Server(), new(handler.Movies))
 
-	// Run service
 	if err := srv.Run(); err != nil {
 		logger.Fatal(err)
 	}
